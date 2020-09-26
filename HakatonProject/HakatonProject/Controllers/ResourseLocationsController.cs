@@ -20,31 +20,7 @@ namespace HakatonProject.Controllers
             var resourseLocation = db.ResourseLocation.Include(r => r.buildings).Include(r => r.LocType);
             return View(resourseLocation.ToList());
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Search(string InputNumber, string InputType)
-        {
-
-            ViewBag.InputNumber = InputNumber;
-            ViewBag.InputType = InputType;
-            if (string.IsNullOrEmpty(InputNumber) && string.IsNullOrEmpty(InputType))
-            {
-                return View();
-            }
-            if (!string.IsNullOrEmpty(InputNumber) && string.IsNullOrEmpty(InputType))
-            {
-                return View(db.ResourseLocation.Where(o => o.name.Contains(InputNumber) || o.name == InputNumber));
-            }
-            if (string.IsNullOrEmpty(InputNumber) && !string.IsNullOrEmpty(InputType))
-            {
-                return View(db.LocType.Where(o => o.type.Contains(InputType) || o.type == InputType));
-            }
-            if (string.IsNullOrEmpty(InputNumber) && string.IsNullOrEmpty(InputType))
-            {
-                return View(db.Resourses.Where(o => (o.Name.Contains(InputNumber) || o.Name == InputNumber) && (o.Genre.Contains(InputType) || o.Genre == InputType)));
-            }
-            return View();
-        }
+        
         // GET: ResourseLocations/Details/5
         public ActionResult Details(int? id)
         {

@@ -256,6 +256,8 @@
     <Content Include="Views\ResourseLocations\Index.cshtml" />
     <Content Include="Views\Resourses\Search.cshtml" />
     <Content Include="Views\Resourses\Location.cshtml" />
+    <Content Include="Views\Resourses\SearchAuditore.cshtml" />
+    <Content Include="Views\Resourses\LocationAuditore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

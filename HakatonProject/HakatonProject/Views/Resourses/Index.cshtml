@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+           Название
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+           Жанр
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ResourseLocation.ID)
+          Аудитория
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ResourseTypes.Type_name)
+          Тип ресурса
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status1.status1)
+            Статус
         </th>
         <th></th>
     </tr>
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Genre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ResourseLocation.ID)
+            @Html.DisplayFor(modelItem => item.ResourseLocation.name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ResourseTypes.Type_name)

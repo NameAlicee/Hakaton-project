@@ -48,6 +48,7 @@ namespace HakatonProject.Controllers
             {
                 RedirectToAction("Search");
             }
+           
             string typeres = db.Resourses.Where(o => o.ID == id).Select(o => o.ResourseTypes.Type_name).First().ToString(); //тип ресурса
             //var resloc2 = db.Resourses.Where(o => o.ID == id).Select(o => o.location.ToString()).ToString();
             int resloc = Convert.ToInt32(db.Resourses.Where(o => o.ID == id).Select(o => o.location).First().ToString()); //ID локации (ресурслокатион)
@@ -64,8 +65,25 @@ namespace HakatonProject.Controllers
             string locname = db.ResourseLocation.Where(o => o.ID == resloc).Select(o => o.name).First().ToString();
 
             ViewBag.Location = typeres + " находится в здании " + build + " на " + floor + " этаже в " + typeloc + " " + locname + ". Следуйте по меткам, чтобы не заблудится ";
-            ViewBag.Floor = floor;
             ViewBag.Locname = locname;
+            return View();
+        }
+
+        public ActionResult LocationAuditore(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                RedirectToAction("Search");
+            }
+
+            string typeauditore = db.ResourseLocation.Where(o => o.ID == id).Select(o => o.LocType.type).First().ToString(); //тип аудитории
+            //var resloc2 = db.Resourses.Where(o => o.ID == id).Select(o => o.location.ToString()).ToString();
+            string auditoreNumber = db.ResourseLocation.Where(o => o.ID == id).Select(o => o.name).First().ToString(); // Номер аудитории
+            string BuildingName = db.ResourseLocation.Where(o => o.ID == id).Select(o => o.buildings.Name).First().ToString(); //тип аудитории
+            string auditorefloor = db.ResourseLocation.Where(o => o.ID == id).Select(o => o.floor).First().ToString(); //тип аудитории
+
+            ViewBag.Location = typeauditore +" " + auditoreNumber + " " + "находится в " + " " +  BuildingName +  " на " + auditorefloor + " этаже";
+            ViewBag.Locname = auditoreNumber;
             return View();
         }
 
@@ -76,6 +94,36 @@ namespace HakatonProject.Controllers
             return View(resourses.ToList());
         }
 
+        public ActionResult SearchAuditore ()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchAuditore(string InputNumber, string InputType)
+        {
+
+            ViewBag.InputNumber = InputNumber;
+            ViewBag.InputType = InputType;
+            if (string.IsNullOrEmpty(InputNumber) && string.IsNullOrEmpty(InputType))
+            {
+                return View();
+            }
+            if (!string.IsNullOrEmpty(InputNumber) && string.IsNullOrEmpty(InputType))
+            {
+                return View(db.ResourseLocation.Where(o => o.name.Contains(InputNumber) || o.name == InputNumber));
+            }
+            if (string.IsNullOrEmpty(InputNumber) && !string.IsNullOrEmpty(InputType))
+            {
+                return View(db.ResourseLocation.Include(o => o.LocType).Where(o => o.LocType.type.Contains(InputType) || o.LocType.type == InputType));
+            }
+            if (string.IsNullOrEmpty(InputNumber) && string.IsNullOrEmpty(InputType))
+            {
+                return View(db.ResourseLocation.Include(o => o.LocType).Where(o => (o.name.Contains(InputNumber) || o.name == InputNumber) && ( o.LocType.type.Contains(InputType) || (o.LocType.type == InputType))));
+            }
+            return View();
+        }
         // GET: Resourses/Details/5
         public ActionResult Details(int? id)
         {
@@ -114,7 +162,7 @@ namespace HakatonProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.location = new SelectList(db.ResourseLocation, "ID", "Тип", resourses.location);
+            ViewBag.location = new SelectList(db.ResourseLocation, "ID", "name");
             ViewBag.ResourseType = new SelectList(db.ResourseTypes, "ID", "Статус", resourses.ResourseType);
             ViewBag.status = new SelectList(db.Status, "ID", "Местоположение", resourses.status);
             return View(resourses);
@@ -132,7 +180,7 @@ namespace HakatonProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.location = new SelectList(db.ResourseLocation, "ID", "ID", resourses.location);
+            ViewBag.location = new SelectList(db.ResourseLocation, "ID", "name");
             ViewBag.ResourseType = new SelectList(db.ResourseTypes, "ID", "Type_name", resourses.ResourseType);
             ViewBag.status = new SelectList(db.Status, "ID", "status1", resourses.status);
             return View(resourses);
@@ -151,7 +199,7 @@ namespace HakatonProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.location = new SelectList(db.ResourseLocation, "ID", "ID", resourses.location);
+            ViewBag.location = new SelectList(db.ResourseLocation, "ID", "name");
             ViewBag.ResourseType = new SelectList(db.ResourseTypes, "ID", "Type_name", resourses.ResourseType);
             ViewBag.status = new SelectList(db.Status, "ID", "status1", resourses.status);
             return View(resourses);
