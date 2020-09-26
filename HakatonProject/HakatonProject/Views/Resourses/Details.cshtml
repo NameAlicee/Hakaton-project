@@ -1,0 +1,58 @@
+﻿@model HakatonProject.Models.Resourses
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Resourses</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourseLocation.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourseLocation.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourseTypes.Type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourseTypes.Type_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status1.status1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status1.status1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

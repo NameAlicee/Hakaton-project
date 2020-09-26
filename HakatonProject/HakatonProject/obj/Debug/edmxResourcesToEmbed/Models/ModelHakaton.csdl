@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Hakaton_projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="buildings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ResourseLocation" Relationship="Self.FK_ResourseLocation_buildings" FromRole="buildings" ToRole="ResourseLocation" />
+  </EntityType>
+  <EntityType Name="LocType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ResourseLocation" Relationship="Self.FK_ResourseLocation_LocType" FromRole="LocType" ToRole="ResourseLocation" />
+  </EntityType>
+  <EntityType Name="ResourseLocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="locationType" Type="Int32" Nullable="false" />
+    <Property Name="building" Type="Int32" Nullable="false" />
+    <Property Name="floor" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="buildings" Relationship="Self.FK_ResourseLocation_buildings" FromRole="ResourseLocation" ToRole="buildings" />
+    <NavigationProperty Name="LocType" Relationship="Self.FK_ResourseLocation_LocType" FromRole="ResourseLocation" ToRole="LocType" />
+    <NavigationProperty Name="Resourses" Relationship="Self.FK_Resourses_ResourseLocation" FromRole="ResourseLocation" ToRole="Resourses" />
+  </EntityType>
+  <EntityType Name="Resourses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Genre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResourseType" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ResourseLocation" Relationship="Self.FK_Resourses_ResourseLocation" FromRole="Resourses" ToRole="ResourseLocation" />
+    <NavigationProperty Name="ResourseTypes" Relationship="Self.FK_Resourses_ResourseTypes" FromRole="Resourses" ToRole="ResourseTypes" />
+    <NavigationProperty Name="Status1" Relationship="Self.FK_Resourses_Status" FromRole="Resourses" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="ResourseTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Resourses" Relationship="Self.FK_Resourses_ResourseTypes" FromRole="ResourseTypes" ToRole="Resourses" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Resourses" Relationship="Self.FK_Resourses_Status" FromRole="Status" ToRole="Resourses" />
+  </EntityType>
+  <Association Name="FK_ResourseLocation_buildings">
+    <End Role="buildings" Type="Self.buildings" Multiplicity="1" />
+    <End Role="ResourseLocation" Type="Self.ResourseLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="buildings">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ResourseLocation">
+        <PropertyRef Name="building" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourseLocation_LocType">
+    <End Role="LocType" Type="Self.LocType" Multiplicity="1" />
+    <End Role="ResourseLocation" Type="Self.ResourseLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ResourseLocation">
+        <PropertyRef Name="locationType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resourses_ResourseLocation">
+    <End Role="ResourseLocation" Type="Self.ResourseLocation" Multiplicity="1" />
+    <End Role="Resourses" Type="Self.Resourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourseLocation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Resourses">
+        <PropertyRef Name="location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resourses_ResourseTypes">
+    <End Role="ResourseTypes" Type="Self.ResourseTypes" Multiplicity="1" />
+    <End Role="Resourses" Type="Self.Resourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourseTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Resourses">
+        <PropertyRef Name="ResourseType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resourses_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Resourses" Type="Self.Resourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Resourses">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Hakaton_projectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="buildings" EntityType="Self.buildings" />
+    <EntitySet Name="LocType" EntityType="Self.LocType" />
+    <EntitySet Name="ResourseLocation" EntityType="Self.ResourseLocation" />
+    <EntitySet Name="Resourses" EntityType="Self.Resourses" />
+    <EntitySet Name="ResourseTypes" EntityType="Self.ResourseTypes" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <AssociationSet Name="FK_ResourseLocation_buildings" Association="Self.FK_ResourseLocation_buildings">
+      <End Role="buildings" EntitySet="buildings" />
+      <End Role="ResourseLocation" EntitySet="ResourseLocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourseLocation_LocType" Association="Self.FK_ResourseLocation_LocType">
+      <End Role="LocType" EntitySet="LocType" />
+      <End Role="ResourseLocation" EntitySet="ResourseLocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resourses_ResourseLocation" Association="Self.FK_Resourses_ResourseLocation">
+      <End Role="ResourseLocation" EntitySet="ResourseLocation" />
+      <End Role="Resourses" EntitySet="Resourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resourses_ResourseTypes" Association="Self.FK_Resourses_ResourseTypes">
+      <End Role="ResourseTypes" EntitySet="ResourseTypes" />
+      <End Role="Resourses" EntitySet="Resourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resourses_Status" Association="Self.FK_Resourses_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Resourses" EntitySet="Resourses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

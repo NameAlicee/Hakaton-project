@@ -1,0 +1,42 @@
+﻿@model HakatonProject.Models.Resourses
+
+@{
+    ViewBag.Title = "Местоположение";
+}
+
+<h2>Местоположение</h2>
+
+<div>
+    <hr />
+    <p>@ViewBag.Location</p>
+</div>
+@if (ViewBag.Floor == "1" && ViewBag.Locname == "№101")
+{
+    <img src="~/Content/First_picture_101.png" />
+}
+@if (ViewBag.Floor == "1" && ViewBag.Locname == "№102")
+{
+    <img src="~/Content/First_picture_102.png" />
+}
+
+@if (ViewBag.Floor == "1" && ViewBag.Locname == "№103")
+{
+    <img src="~/Content/First_picture_103.png" />
+}
+
+@if (ViewBag.Floor == "2" && ViewBag.Lockname == "№203")
+{
+    <img src="~/Content/floor2_203.png" />
+}
+@if (ViewBag.Floor == "3" && ViewBag.Lockname == "№301")
+{
+    <img src="~/Content/floor3_301.png" />
+}
+@if (ViewBag.Floor == "3" && ViewBag.Lockname == "№328")
+{
+    <img src="~/Content/floor3_328.png" />
+}
+
+@*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

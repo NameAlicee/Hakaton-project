@@ -1,0 +1,79 @@
+﻿@model IEnumerable<HakatonProject.Models.ResourseLocation>
+
+@{
+    ViewBag.Title = "Поиск аудитории";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Поиск Аудитории</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <p class="control-label col-md-2">Номер аудитории:</p>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="InputNumber" value="@ViewBag.InputNumber" />
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Тип аудитории:</p>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="InputType" value="@ViewBag.InputType" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Поиск" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.locationType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.building)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.floor)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.locationType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.building)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.floor)
+                </td>
+                <td>
+                    @Html.ActionLink("Показать место", "Location", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

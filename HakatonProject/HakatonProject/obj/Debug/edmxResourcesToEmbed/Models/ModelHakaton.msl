@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Hakaton_projectModelContainer" CdmEntityContainer="Hakaton_projectEntities">
+    <EntitySetMapping Name="buildings">
+      <EntityTypeMapping TypeName="Hakaton_projectModel.buildings">
+        <MappingFragment StoreEntitySet="buildings">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocType">
+      <EntityTypeMapping TypeName="Hakaton_projectModel.LocType">
+        <MappingFragment StoreEntitySet="LocType">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResourseLocation">
+      <EntityTypeMapping TypeName="Hakaton_projectModel.ResourseLocation">
+        <MappingFragment StoreEntitySet="ResourseLocation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="locationType" ColumnName="locationType" />
+          <ScalarProperty Name="building" ColumnName="building" />
+          <ScalarProperty Name="floor" ColumnName="floor" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resourses">
+      <EntityTypeMapping TypeName="Hakaton_projectModel.Resourses">
+        <MappingFragment StoreEntitySet="Resourses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="ResourseType" ColumnName="ResourseType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResourseTypes">
+      <EntityTypeMapping TypeName="Hakaton_projectModel.ResourseTypes">
+        <MappingFragment StoreEntitySet="ResourseTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type_name" ColumnName="Type name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="Hakaton_projectModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="status1" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
