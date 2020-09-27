@@ -40,8 +40,8 @@
     <Property Name="ResourseType" Type="Int32" Nullable="false" />
     <Property Name="status" Type="Int32" Nullable="false" />
     <Property Name="location" Type="Int32" Nullable="false" />
+    <Property Name="Section" Type="Int32" />
     <Property Name="shelf" Type="Int32" />
-    <Property Name="Section" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ResourseLocation" Relationship="Self.FK_Resourses_ResourseLocation" FromRole="Resourses" ToRole="ResourseLocation" />
     <NavigationProperty Name="ResourseTypes" Relationship="Self.FK_Resourses_ResourseTypes" FromRole="Resourses" ToRole="ResourseTypes" />
     <NavigationProperty Name="Status1" Relationship="Self.FK_Resourses_Status" FromRole="Resourses" ToRole="Status" />

@@ -12,46 +12,64 @@
 <table class="table">
     <tr>
         <th>
-           Название
+            Название
         </th>
         <th>
-           Жанр
+            Секция
         </th>
         <th>
-          Аудитория
+            Полка
         </th>
         <th>
-          Тип ресурса
+            Жанр
         </th>
         <th>
-            Статус
+            Аудитория
+        </th>
+
+        <th>
+            Тип Ресурса
+        </th>
+
+        <th>
+            Доступность
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResourseLocation.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResourseTypes.Type_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status1.status1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.shelf)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourseLocation.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourseTypes.Type_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status1.status1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

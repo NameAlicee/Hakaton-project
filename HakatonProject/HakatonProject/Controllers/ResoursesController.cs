@@ -64,8 +64,13 @@ namespace HakatonProject.Controllers
 
             string locname = db.ResourseLocation.Where(o => o.ID == resloc).Select(o => o.name).First().ToString();
 
-            ViewBag.Location = typeres + " находится в здании " + build + " на " + floor + " этаже в " + typeloc + " " + locname + ". Следуйте по меткам, чтобы не заблудится ";
+            string SectionName = db.Resourses.Where(o => o.ID == id).Select(o => o.Section).First().ToString();
+
+            string shelfname = db.Resourses.Where(o => o.ID == id).Select(o => o.shelf).First().ToString();
+
+            ViewBag.Location = typeres + " находится в здании " + build + " на " + floor + " этаже в " + typeloc + " " + locname + " в Секции " + SectionName+ " на " + shelfname + " полке"+ " . Следуйте по меткам, чтобы не заблудится ";
             ViewBag.Locname = locname;
+            ViewBag.Section = SectionName;
             return View();
         }
 
@@ -145,6 +150,7 @@ namespace HakatonProject.Controllers
             ViewBag.location = new SelectList(db.ResourseLocation, "ID", "name");
             ViewBag.ResourseType = new SelectList(db.ResourseTypes, "ID", "Type_name");
             ViewBag.status = new SelectList(db.Status, "ID", "status1");
+
             return View();
         }
 
@@ -153,7 +159,7 @@ namespace HakatonProject.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Genre,ResourseType,status,location")] Resourses resourses)
+        public ActionResult Create( Resourses resourses)
         {
             if (ModelState.IsValid)
             {
@@ -163,8 +169,8 @@ namespace HakatonProject.Controllers
             }
 
             ViewBag.location = new SelectList(db.ResourseLocation, "ID", "name");
-            ViewBag.ResourseType = new SelectList(db.ResourseTypes, "ID", "Статус", resourses.ResourseType);
-            ViewBag.status = new SelectList(db.Status, "ID", "Местоположение", resourses.status);
+            ViewBag.ResourseType = new SelectList(db.ResourseTypes, "ID", "Type_name", resourses.ResourseType);
+            ViewBag.status = new SelectList(db.Status, "ID", "status1", resourses.status);
             return View(resourses);
         }
 

@@ -40,6 +40,8 @@
           <Property Name="ResourseType" Type="int" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="location" Type="int" Nullable="false" />
+          <Property Name="shelf" Type="int" />
+          <Property Name="Section" Type="nvarchar" MaxLength="6" />
         </EntityType>
         <EntityType Name="ResourseTypes">
           <Key>
@@ -54,6 +56,16 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_ResourseLocation_buildings">
           <End Role="buildings" Type="Self.buildings" Multiplicity="1" />
@@ -122,6 +134,7 @@
           <EntitySet Name="Resourses" EntityType="Self.Resourses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResourseTypes" EntityType="Self.ResourseTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ResourseLocation_buildings" Association="Self.FK_ResourseLocation_buildings">
             <End Role="buildings" EntitySet="buildings" />
             <End Role="ResourseLocation" EntitySet="ResourseLocation" />
@@ -188,6 +201,8 @@
           <Property Name="ResourseType" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
           <Property Name="location" Type="Int32" Nullable="false" />
+          <Property Name="shelf" Type="Int32" />
+          <Property Name="Section" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ResourseLocation" Relationship="Self.FK_Resourses_ResourseLocation" FromRole="Resourses" ToRole="ResourseLocation" />
           <NavigationProperty Name="ResourseTypes" Relationship="Self.FK_Resourses_ResourseTypes" FromRole="Resourses" ToRole="ResourseTypes" />
           <NavigationProperty Name="Status1" Relationship="Self.FK_Resourses_Status" FromRole="Resourses" ToRole="Status" />
@@ -207,6 +222,16 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="status1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Resourses" Relationship="Self.FK_Resourses_Status" FromRole="Status" ToRole="Resourses" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_ResourseLocation_buildings">
           <End Role="buildings" Type="Self.buildings" Multiplicity="1" />
@@ -275,6 +300,7 @@
           <EntitySet Name="Resourses" EntityType="Self.Resourses" />
           <EntitySet Name="ResourseTypes" EntityType="Self.ResourseTypes" />
           <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_ResourseLocation_buildings" Association="Self.FK_ResourseLocation_buildings">
             <End Role="buildings" EntitySet="buildings" />
             <End Role="ResourseLocation" EntitySet="ResourseLocation" />
@@ -339,6 +365,8 @@
                 <ScalarProperty Name="ResourseType" ColumnName="ResourseType" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="shelf" ColumnName="shelf" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -355,6 +383,17 @@
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="status1" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Hakaton_projectModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -178,6 +178,9 @@
     <Compile Include="Models\Status.cs">
       <DependentUpon>ModelHakaton.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModelHakaton.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,12 +188,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\First_picture_101.png" />
-    <Content Include="Content\First_picture_102.png" />
-    <Content Include="Content\First_picture_103.png" />
-    <Content Include="Content\floor2_203.png" />
-    <Content Include="Content\floor3_301.png" />
-    <Content Include="Content\floor3_328.png" />
+    <Content Include="Content\Этаж №1 - Помещение № 101 - Секция O - № Стелажа 1 - Полка № 1.png" />
+    <Content Include="Content\Этаж №1 - Помещение № 102 - Секция G - № Стелажа 2 - Полка № 2.png.png" />
+    <Content Include="Content\Этаж №1 - Помещение № 103 - Секция J - № Стелажа 4 - Полка № 5.png" />
+    <Content Include="Content\Этаж №1 - Помещение № 103 - Секция L - № Стелажа 2 - Полка № 2.png" />
+    <Content Include="Content\Этаж №2 - Помещение № 203 - Секция P - № Стелажа 3 - Полка № 5.png" />
+    <Content Include="Content\Этаж №2 - Помещение № 203 - Секция R - № Стелажа 1 - Полка № 1.png" />
+    <Content Include="Content\Этаж №3 - Помещение № 301 - Секция 1  - № Стелажа 1 - Полка № 5.png" />
+    <Content Include="Content\Этаж №3 - Помещение № 301 - Секция 2 - № Стелажа 3 - Полка № 1.png" />
+    <Content Include="Content\Этаж №3 - Помещение № 328 - Секция 1 - № Стелажа 1 - Полка № 3.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

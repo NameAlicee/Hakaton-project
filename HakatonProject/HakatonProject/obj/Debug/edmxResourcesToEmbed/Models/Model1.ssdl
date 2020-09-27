@@ -35,8 +35,8 @@
     <Property Name="ResourseType" Type="int" Nullable="false" />
     <Property Name="status" Type="int" Nullable="false" />
     <Property Name="location" Type="int" Nullable="false" />
+    <Property Name="Section" Type="int" />
     <Property Name="shelf" Type="int" />
-    <Property Name="Section" Type="nvarchar" MaxLength="6" />
   </EntityType>
   <EntityType Name="ResourseTypes">
     <Key>

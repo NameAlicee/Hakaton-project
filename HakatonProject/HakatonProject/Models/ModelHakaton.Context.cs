@@ -31,5 +31,6 @@ namespace HakatonProject.Models
         public virtual DbSet<Resourses> Resourses { get; set; }
         public virtual DbSet<ResourseTypes> ResourseTypes { get; set; }
         public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

@@ -12,19 +12,12 @@ namespace HakatonProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Resourses
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Genre { get; set; }
-        public int ResourseType { get; set; }
-        public int status { get; set; }
-        public int location { get; set; }
-        public Nullable<int> shelf { get; set; }
-        public string Section { get; set; }
-    
-        public virtual ResourseLocation ResourseLocation { get; set; }
-        public virtual ResourseTypes ResourseTypes { get; set; }
-        public virtual Status Status1 { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

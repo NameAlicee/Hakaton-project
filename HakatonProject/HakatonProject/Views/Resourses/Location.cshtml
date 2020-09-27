@@ -10,31 +10,31 @@
     <hr />
     <p>@ViewBag.Location</p>
 </div>
-@if ( ViewBag.locname == "№101")
+@if ( ViewBag.locname =="№101" && ViewBag.Section == "O")
 {
-    <img src="~/Content/First_picture_101.png" />
+    <img src="~/Content/Этаж №1 - Помещение № 101 - Секция O - № Стелажа 1 - Полка № 1.png"/>
 }
-@if (ViewBag.Locname == "№102")
+@if (ViewBag.Locname == "№102" && ViewBag.Section == "G")
 {
-    <img src="~/Content/First_picture_102.png" />
-}
-
-@if (ViewBag.Locname == "№103")
-{
-    <img src="~/Content/First_picture_103.png" />
+    <img src="~/Content/Этаж №1 - Помещение № 102 - Секция G - № Стелажа 2 - Полка № 2.png.png" />
 }
 
-@if ( ViewBag.Locname == "№203")
+@if (ViewBag.Locname == "№103" && ViewBag.Section == "L")
 {
-    <img src="~/Content/floor2_203.png" />
+    <img src="~/Content/Этаж №1 - Помещение № 103 - Секция L - № Стелажа 2 - Полка № 2.png" />
 }
-@if (ViewBag.Locname == "№301")
+
+@if ( ViewBag.Locname == "№203" && ViewBag.Section == "P")
 {
-    <img src="~/Content/floor3_301.png" />
+    <img src="~/Content/Этаж №2 - Помещение № 203 - Секция P - № Стелажа 3 - Полка № 5.png" />
 }
-@if (ViewBag.Locname == "№328")
+@if (ViewBag.Locname == "№301" && ViewBag.Section == "Q")
 {
-    <img src="~/Content/floor3_328.png" />
+    <img src="~/Content/Этаж №3 - Помещение № 301 - Секция 1  - № Стелажа 1 - Полка № 5.png" />
+}
+@if (ViewBag.Locname == "№328" && ViewBag.Section == "R")
+{
+    <img src="~/Content/Этаж №3 - Помещение № 328 - Секция 1 - № Стелажа 1 - Полка № 3.png" />
 }
 
  @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

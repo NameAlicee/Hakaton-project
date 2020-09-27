@@ -4,13 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="379d2c7e147540a59192b2879f214a0f" Name="Diagram1">
-        <EntityTypeShape EntityType="Hakaton_projectModel.buildings" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hakaton_projectModel.LocType" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hakaton_projectModel.ResourseLocation" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="0e0961890e5644b99098da4a59146897" Name="Diagram1">
+        <EntityTypeShape EntityType="Hakaton_projectModel.buildings" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hakaton_projectModel.LocType" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hakaton_projectModel.ResourseLocation" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hakaton_projectModel.Resourses" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hakaton_projectModel.ResourseTypes" Width="1.5" PointX="8.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hakaton_projectModel.Status" Width="1.5" PointX="3.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hakaton_projectModel.ResourseTypes" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hakaton_projectModel.Status" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hakaton_projectModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="Hakaton_projectModel.FK_ResourseLocation_buildings" ManuallyRouted="false" />
         <AssociationConnector Association="Hakaton_projectModel.FK_ResourseLocation_LocType" ManuallyRouted="false" />
         <AssociationConnector Association="Hakaton_projectModel.FK_Resourses_ResourseLocation" ManuallyRouted="false" />

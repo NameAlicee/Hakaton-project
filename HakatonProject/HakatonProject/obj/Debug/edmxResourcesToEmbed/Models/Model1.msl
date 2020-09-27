@@ -38,8 +38,8 @@
           <ScalarProperty Name="ResourseType" ColumnName="ResourseType" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="location" ColumnName="location" />
-          <ScalarProperty Name="shelf" ColumnName="shelf" />
           <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="shelf" ColumnName="shelf" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
